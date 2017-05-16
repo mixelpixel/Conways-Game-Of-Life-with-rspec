@@ -1,0 +1,185 @@
+1234567890---------2---------3---------4---------5---------6---------7-2-------8---------9---------1
+SVENs GITHUB: https://github.com/ofcan/game-of-life-ruby
+MY PLAYLIST:  https://www.youtube.com/playlist?list=PLMC91Ry9EhRKUn0MIdgXrZiptF7nVyYoQ
+MY GITHUB:    https://github.com/mixelpixel/GameOfLife
+**A Ruby Tutorial: Implementing John H. Conway's "Game of Life"**
+PART 10 - Counting the neighbours (continued)
+https://youtu.be/nOrBc8kMNx4?list=PLMC91Ry9EhRKUn0MIdgXrZiptF7nVyYoQ
+
+
+
+Rename "neighbors aroud cell" to "live neighbors..."
+# game
+ 35   def live_neighbors_around_cell(cell)
+ 36   end
+# spec
+  7 describe 'Game of Life' do
+...
+ 18     it 'should respond to proper methods' do
+...
+ 22       expect(subject).to respond_to(:live_neighbors_around_cell)
+
+... and testing rspec spec_game_of_life.rb:18 passes.
+
+Start setting up the tests for neighbor cells
+# spec
+ 36     it 'should detect a neighbor to the NORTH' do
+ 37       subject.cell_grid[0][1].alive = true
+ 38       expect(subject.cell_grid[0][1].alive).to be_truthy
+ 39     end
+
+...and run rspec spec_game_of_life.rb:36 - it passes!
+
+ALSO - since we made the alive? method, this works:
+# spec
+ 36     it 'should detect a neighbor to the NORTH' do
+ 37       subject.cell_grid[0][1].alive = true
+ 38       expect(subject.cell_grid[0][1]).to be_alive
+ 39     end
+
+...NOW we should first confirm that the cell is DEAD before making
+it become alive (...alive = true)  on # spec: 37. If we rspec:
+# spec
+ 36     it 'should detect a neighbor to the NORTH' do
+ 37       expect(subject.cell_grid[0][1]).to be_dead
+ 38       subject.cell_grid[0][1].alive = true
+ 39       expect(subject.cell_grid[0][1]).to be_alive
+ 40     end
+
+...the test fails, so we need to make a "dead?" method in Cell:
+# game
+ 41 class Cell
+...
+ 54   def dead?; !alive; end
+
+... and the test passes
+
+NOTE: on style
+# game
+ 50   def alive?; alive; end
+ 51 
+ 52   def dead?; not alive; end
+
+ONWARD: we make the test for counting live neighbors:
+# spec
+ 36     it 'should detect a neighbor to the NORTH' do
+ 37       expect(subject.cell_grid[0][1]).to be_dead
+ 38       subject.cell_grid[0][1].alive = true
+ 39       expect(subject.cell_grid[0][1]).to be_alive
+ 40       expect(subject.live_neighbors_around_cell(subject.cell_grid[1][1]).count).to == 1
+ 41     end
+
+# game
+ 18 class World
+...
+ 35   def live_neighbors_around_cell(cell)
+ 36     live_neighbors = []
+ 37 
+ 38     # it detects a neighbor to the North
+ 39     if cell.y > 0                                    # No neighbors to the North of the TOP row (cell.y < 0)
+ 40       candidate = self.cell_grid[cell.y - 1][cell.x]
+ 41       live_neighbors << candidate if candidate.alive
+ 42     end
+ 43     
+ 44     live_neighbors
+ 45   end
+
+Since North works, Sven has asked for his viewers to figure out the total 8 directions
+(NorthWest,  North, NorthEast,
+      West,  [0,0],      East,
+ SouthWest,  South, SouthEst)
+
+i.e.
+
+([-1. -1], [-1, 0], [-1, +1],
+ [ 0, -1], [ 0, 0], [ 0, +1],
+ [+1, -1], [+1, 0], [+1, +1])
+
+SOUTH
+# spec
+ 43     it 'should detect a neighbor to the SOUTH' do
+ 44       expect(subject.cell_grid[2][1]).to be_dead
+ 45       subject.cell_grid[2][1].alive = true
+ 46       expect(subject.cell_grid[2][1]).to be_alive
+ 47       expect(subject.live_neighbors_around_cell(subject.cell_grid[1][1]).count) == 1
+ 48     end
+
+rspec spec_game_of_life.rb:43 PASSES
+
+
+WEST
+#spec
+ 50     it 'should detect a neighbor to the WEST' do
+ 51       expect(subject.cell_grid[1][0]).to be_dead
+ 52       subject.cell_grid[1][0].alive = true
+ 53       expect(subject.cell_grid[1][0]).to be_alive
+ 54       expect(subject.live_neighbors_around_cell(subject.cell_grid[1][1]).count) == 1
+ 55     end
+
+rspec spec_game_of_life.rb:50 PASSES
+
+
+EAST
+# spec
+ 57     it 'should detect a neighbor to the EAST' do
+ 58       expect(subject.cell_grid[1][2]).to be_dead
+ 59       subject.cell_grid[1][2].alive = true
+ 60       expect(subject.cell_grid[1][2]).to be_alive
+ 61       expect(subject.live_neighbors_around_cell(subject.cell_grid[1][1]).count) == 1
+ 62     end
+
+rspec spec_game_of_life.rb:57 PASSES
+
+
+NORTHWEST
+# spec
+ 64     it 'should detect a neighbor to the NORTHWEST' do
+ 65       expect(subject.cell_grid[0][0]).to be_dead
+ 66       subject.cell_grid[0][0].alive = true
+ 67       expect(subject.cell_grid[0][0]).to be_alive
+ 68       expect(subject.live_neighbors_around_cell(subject.cell_grid[1][1]).count) == 1
+ 69     end
+
+rspec spec_game_of_life.rb:64 PASSES
+
+
+NORTHEAST
+# spec
+ 71     it 'should detect a neighbor to the NORTHEAST' do
+ 72       expect(subject.cell_grid[0][2]).to be_dead
+ 73       subject.cell_grid[0][2].alive = true
+ 74       expect(subject.cell_grid[0][2]).to be_alive
+ 75       expect(subject.live_neighbors_around_cell(subject.cell_grid[1][1]).count) == 1
+ 76     end
+
+rspec spec_game_of_life.rb:71 PASSES
+
+
+SOUTHWEST
+# spec
+ 78     it 'should detect a neighbor to the SOUTHWEST' do
+ 79       expect(subject.cell_grid[2][0]).to be_dead
+ 80       subject.cell_grid[2][0].alive = true
+ 81       expect(subject.cell_grid[2][0]).to be_alive
+ 82       expect(subject.live_neighbors_around_cell(subject.cell_grid[1][1]).count) == 1
+ 83     end
+
+rspec spec_game_of_life.rb:78
+
+
+SOUTHEAST
+# spec
+ 85     it 'should detect a neighbor to the SOUTHEAST' do
+ 86       expect(subject.cell_grid[2][2]).to be_dead
+ 87       subject.cell_grid[2][2].alive = true
+ 88       expect(subject.cell_grid[2][2]).to be_alive
+ 89       expect(subject.live_neighbors_around_cell(subject.cell_grid[1][1]).count) == 1
+ 90     end
+
+rspec spec_game_of_life.rb:85
+
+
+I suppose I might ultimately change the ordering of these, but I'll see what the next tutorial reveals.
+
+
+
