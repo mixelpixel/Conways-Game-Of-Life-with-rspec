@@ -1,5 +1,13 @@
 # GameOfLife
 Requires installation of the gosu gem.  
+To do: add a gem check, e.g.  
+```
+if Gem::Specification::find_all_by_name('gemname').any?
+  do stuff
+end
+```
+per: https://ruby-doc.org/stdlib-2.4.0/libdoc/rubygems/rdoc/Gem/Specification.html#method-c-find_all_by_name  
+and: https://stackoverflow.com/a/13711828/5225057  
 
 John H. Conway's "Game of Life"  
 https://www.youtube.com/watch?v=R9Plq-D1gEk John H. Conway  
