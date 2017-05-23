@@ -8,6 +8,7 @@ end
 ```
 per: https://ruby-doc.org/stdlib-2.4.0/libdoc/rubygems/rdoc/Gem/Specification.html#method-c-find_all_by_name  
 and: https://stackoverflow.com/a/13711828/5225057  
+...which I suppose either continues if true, or displays a message telling the user to install the gem and ten quits the app if ...any? returns false.  
 
 John H. Conway's "Game of Life"  
 https://www.youtube.com/watch?v=R9Plq-D1gEk John H. Conway  
