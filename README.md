@@ -46,6 +46,7 @@ http://bundler.io/
 
 Gosu:  
 https://github.com/gosu/gosu/wiki/getting-started-on-os-x -for macOS!
+https://www.libgosu.org/ruby.html
 https://www.libgosu.org/  
 https://github.com/gosu/gosu/wiki/Getting-Started-on-Linux  
 https://github.com/gosu/gosu/wiki/ruby-tutorial  
