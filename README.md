@@ -1,4 +1,6 @@
 # GameOfLife
+Requires installation of the gosu gem.  
+
 John H. Conway's "Game of Life"  
 https://www.youtube.com/watch?v=R9Plq-D1gEk John H. Conway  
 https://www.youtube.com/watch?v=E8kUJL04ELA More from Mr. Conway  
@@ -45,7 +47,7 @@ bundler:
 http://bundler.io/  
 
 Gosu:  
-https://github.com/gosu/gosu/wiki/getting-started-on-os-x -for macOS!
+https://github.com/gosu/gosu/wiki/getting-started-on-os-x -for macOS, XCode, FUN!
 https://www.libgosu.org/ruby.html
 https://www.libgosu.org/  
 https://github.com/gosu/gosu/wiki/Getting-Started-on-Linux  
