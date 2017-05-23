@@ -3,7 +3,7 @@ John H. Conway's "Game of Life"
 https://www.youtube.com/watch?v=R9Plq-D1gEk John H. Conway  
 https://www.youtube.com/watch?v=E8kUJL04ELA More from Mr. Conway  
 Wiki: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life  
-  
+
 A Ruby Tutorial  
 GitHub: https://github.com/ofcan/game-of-life-ruby  
 YouTube videos:  
@@ -25,10 +25,10 @@ https://www.youtube.com/watch?v=bUuLTQfO1rQ Part14 - Gosu Background and Variabl
 https://www.youtube.com/watch?v=mRI7uk-WhNk Part15 - Connecting Gocu  
 https://www.youtube.com/watch?v=p3luB_usR5A Part16 - Drawing the cells  
 https://www.youtube.com/watch?v=wIbL4klYtQk Part17 - The Grand Finale  
-  
+
 other resources:   
 https://www.youtube.com/watch?v=SSPXwnYCGn8 Texas Instruments version  
-  
+
 Of note from the tutorial author:  
 https://github.com/ofcan/game-of-life-ruby  
 http://stackoverflow.com/users/1028956/ofca  
@@ -36,15 +36,16 @@ http://stackoverflow.com/questions/15422642/ruby-game-of-life-with-gosu-update-a
 
 rspec:  
 http://rspec.info/  
-  
+
 RVM:  
 https://rvm.io/  
 https://rvm.io/rvm/install  
-  
+
 bundler:  
 http://bundler.io/  
-  
+
 Gosu:  
+https://github.com/gosu/gosu/wiki/getting-started-on-os-x -for macOS!
 https://www.libgosu.org/  
 https://github.com/gosu/gosu/wiki/Getting-Started-on-Linux  
 https://github.com/gosu/gosu/wiki/ruby-tutorial  
